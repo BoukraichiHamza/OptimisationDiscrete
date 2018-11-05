@@ -1,0 +1,37 @@
+%% Résolution du problèmes du sac à dos 
+%% Paramètres :
+% u : utilité de chaque objet
+% v : volume de chaque objet
+% V : Volume totale du KP
+% s : Variante utilisés
+
+function [x,z] = Greedy_kp(u,v,V,s)
+
+%% Initialisation
+W = 0;
+%
+switch s
+    case 1
+        u = u;
+        v = v;
+    case 2
+    case 3
+    case 4
+    case 5
+    otherwise
+        error("Variante indi
+[u,ind] = sort(u,2,'descend');
+v = v[ind];
+n = size(u);
+x = zeros(n,1);
+
+for i=1:n
+    j = ind[i];
+    W = v[j] + W;
+    
+    if (W < V)
+        x[j] = 1;
+    else
+        W = W - v[j];
+    end
+end
